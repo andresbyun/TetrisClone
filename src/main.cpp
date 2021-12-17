@@ -1,5 +1,7 @@
-#include <iostream>
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
+#include <iostream>
 
 using std::cout;
 using std::endl;
@@ -12,15 +14,25 @@ int main() {
         return -1;
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(1280, 960, "Tetris", NULL, NULL);
+    window = glfwCreateWindow(800, 600, "Tetris", NULL, NULL);
     if (!window)
     {
+        cout << "Failed to create a window" << endl;
         glfwTerminate();
         return -1;
     }
 
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
+
+    /* Initialize GLAD */
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+    {
+        cout << "Failed to initialize GLAD" << endl;
+        return -1;
+    }
+
+    glViewport(0, 0, 800, 600);
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
@@ -36,6 +48,5 @@ int main() {
     }
 
     glfwTerminate();
-
 	return 0;
 }
