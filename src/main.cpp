@@ -1,10 +1,4 @@
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-#include <glm/glm.hpp>
-#include <iostream>
-
-using std::cout;
-using std::endl;
+#include "main.hpp"
 
 int main() {
     GLFWwindow* window;
@@ -24,6 +18,7 @@ int main() {
 
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
+    glfwSetFramebufferSizeCallback(window, resize_callback);
 
     /* Initialize GLAD */
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -49,4 +44,9 @@ int main() {
 
     glfwTerminate();
 	return 0;
+}
+
+/* Resize the window */
+void resize_callback(GLFWwindow* window, int width, int height) {
+    glViewport(0, 0, width, height);
 }

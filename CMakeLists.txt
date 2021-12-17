@@ -14,24 +14,22 @@ include_directories(
 	include/glfw-3.3.6/include
 )
 
+### GLAD ###
 add_library(glad include/glad/glad.h src/glad.c)
 
-set(ALL_LIBS
+# Define all the libraries
+set(LIBS
 	${OPENGL_LIBRARY}
 	glfw
+	glad
 )
 
 # Add the executable
 add_executable(Tetris
 	src/main.cpp
-)
+ )
 
 # Link Libraries
 target_link_libraries(Tetris PUBLIC
-	${ALL_LIBS}
-)
-
-target_link_libraries(Tetris
-	PRIVATE
-	glad
+	${LIBS}
 )
