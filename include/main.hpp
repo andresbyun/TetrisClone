@@ -12,6 +12,7 @@ using std::cout;
 using std::endl;
 
 /* Function declarations */
-void resize_callback(GLFWwindow* window, int width, int height);
+void resizeCallback(GLFWwindow* window, int width, int height);
+void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 #endif

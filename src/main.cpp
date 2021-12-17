@@ -9,8 +9,7 @@ int main() {
 
     /* Create a windowed mode window and its OpenGL context */
     window = glfwCreateWindow(800, 600, "Tetris", NULL, NULL);
-    if (!window)
-    {
+    if (!window) {
         cout << "Failed to create a window" << endl;
         glfwTerminate();
         return -1;
@@ -18,11 +17,10 @@ int main() {
 
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
-    glfwSetFramebufferSizeCallback(window, resize_callback);
+    glfwSetFramebufferSizeCallback(window, resizeCallback);
 
     /* Initialize GLAD */
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-    {
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
         cout << "Failed to initialize GLAD" << endl;
         return -1;
     }
@@ -30,8 +28,10 @@ int main() {
     glViewport(0, 0, 800, 600);
 
     /* Loop until the user closes the window */
-    while (!glfwWindowShouldClose(window))
-    {
+    while (!glfwWindowShouldClose(window)) {
+        /* Process user keyboard input */
+        glfwSetKeyCallback(window, keyCallback);
+
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
@@ -47,6 +47,16 @@ int main() {
 }
 
 /* Resize the window */
-void resize_callback(GLFWwindow* window, int width, int height) {
+void resizeCallback(GLFWwindow* window, int width, int height) {
     glViewport(0, 0, width, height);
+}
+
+/* Process the key input */
+void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+    switch (key){
+    case(GLFW_KEY_ESCAPE):
+        glfwSetWindowShouldClose(window, true);
+    default:
+        break;
+    }
 }
