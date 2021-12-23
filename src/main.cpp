@@ -1,5 +1,15 @@
 #include "main.hpp"
 
+/* Using statements */
+using std::cout;
+using std::endl;
+using std::string;
+using glm::value_ptr;
+using glm::vec3;
+using glm::vec4;
+using glm::mat3;
+using glm::mat4;
+
 int main() {
 	GLFWwindow* window;
 	CURRENT_SCREEN = TITLE;

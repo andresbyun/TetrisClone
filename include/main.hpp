@@ -8,16 +8,7 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <iostream>
 #include <string>
-
-/* Using statements */
-using std::cout;
-using std::endl;
-using std::string;
-using glm::value_ptr;
-using glm::vec3;
-using glm::vec4;
-using glm::mat3;
-using glm::mat4;
+#include <shaders.hpp>
 
 /* Modes for title screen or playing the game */
 enum screen_mode {
