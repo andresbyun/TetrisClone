@@ -63,13 +63,18 @@ void render(GLFWwindow* window) {
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(data), data, GL_STATIC_DRAW);
 
+	/* Create Program */
+	unsigned int programId = LoadShaders("shaders/vertex.glsl", "shaders/fragment.glsl");
+
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window)) {
 		/* Process user keyboard input */
 		glfwSetKeyCallback(window, keyCallback);
 
 		/* Render here */
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		glUseProgram(programId);
 
 		glEnableVertexAttribArray(0);
 		glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
@@ -79,7 +84,6 @@ void render(GLFWwindow* window) {
 			glDrawArrays(GL_TRIANGLES, 0, 3);
 			glDisableVertexAttribArray(0);
 		}
-		
 
 		/* Swap front and back buffers */
 		glfwSwapBuffers(window);

@@ -27,7 +27,11 @@ set(LIBS
 # Add the executable
 add_executable(Tetris
 	src/main.cpp
- )
+	src/shaders.cpp
+)
+
+# Copy the shaders to the executable's directory
+FILE(COPY shaders DESTINATION "${CMAKE_BINARY_DIR}")
 
 # Link Libraries
 target_link_libraries(Tetris PUBLIC

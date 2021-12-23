@@ -8,6 +8,6 @@
 #include <fstream>
 #include <vector>
 
-unsigned int LoadShaders(string vertexPath, string fragmentPath);
+unsigned int LoadShaders(std::string vertexPath, std::string fragmentPath);
 
 #endif

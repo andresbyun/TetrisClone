@@ -1,5 +1,10 @@
 #include <shaders.hpp>
 
+#include <iostream>
+#include <string>
+#include <filesystem>
+#include <windows.h>
+
 using std::string;
 using std::stringstream;
 using std::ifstream;
@@ -54,7 +59,7 @@ string ShaderCode(string filepath) {
 	if (ShaderStream.is_open()) {
 		stringstream strm;
 		strm << ShaderStream.rdbuf();
-		ShaderCode = strm.str();
+		code = strm.str();
 		ShaderStream.close();
 	}
 	else {
