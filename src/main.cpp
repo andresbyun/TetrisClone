@@ -64,7 +64,8 @@ void render(GLFWwindow* window) {
 	glBufferData(GL_ARRAY_BUFFER, sizeof(data), data, GL_STATIC_DRAW);
 
 	/* Create Program */
-	unsigned int programId = LoadShaders("shaders/vertex.glsl", "shaders/fragment.glsl");
+	unsigned int programId = LoadShaders(
+		"resources/shaders/vertex.glsl", "resources/shaders/fragment.glsl");
 
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window)) {
@@ -74,13 +75,13 @@ void render(GLFWwindow* window) {
 		/* Render here */
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		glUseProgram(programId);
+		if (CURRENT_SCREEN == GAME) {
+			glUseProgram(programId);
 
-		glEnableVertexAttribArray(0);
-		glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+			glEnableVertexAttribArray(0);
+			glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
 
-		if (CURRENT_SCREEN) {
 			glDrawArrays(GL_TRIANGLES, 0, 3);
 			glDisableVertexAttribArray(0);
 		}

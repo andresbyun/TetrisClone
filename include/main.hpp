@@ -13,7 +13,8 @@
 /* Modes for title screen or playing the game */
 enum screen_mode {
 	TITLE,
-	GAME
+	GAME,
+	END
 };
 
 /* Global variables */
