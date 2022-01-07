@@ -9,6 +9,7 @@
 #include <iostream>
 #include <string>
 #include <shaders.hpp>
+#include <game.hpp>
 
 /* Modes for title screen or playing the game */
 enum screen_mode {

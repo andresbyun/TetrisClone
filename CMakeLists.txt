@@ -24,14 +24,19 @@ set(LIBS
 	glad
 )
 
+# Copy the shaders to the executable's directory
+FILE(COPY ./resources DESTINATION "${CMAKE_BINARY_DIR}")
+
 # Add the executable
 add_executable(Tetris
 	src/main.cpp
 	src/shaders.cpp
-)
+	src/game.cpp
+	src/BoolMat.cpp
 
-# Copy the shaders to the executable's directory
-FILE(COPY resources DESTINATION "${CMAKE_BINARY_DIR}")
+	src/GameElements/Field
+	src/GameElements/Tetromino
+)
 
 # Link Libraries
 target_link_libraries(Tetris PUBLIC

@@ -58,6 +58,7 @@ void render(GLFWwindow* window) {
 		 .0f,  .5f,  .0f
 	};
 
+
 	unsigned int vertexBuffer;
 	glGenBuffers(1, &vertexBuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
@@ -76,14 +77,7 @@ void render(GLFWwindow* window) {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		if (CURRENT_SCREEN == GAME) {
-			glUseProgram(programId);
-
-			glEnableVertexAttribArray(0);
-			glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
-
-			glDrawArrays(GL_TRIANGLES, 0, 3);
-			glDisableVertexAttribArray(0);
+			drawGame(programId, vertexBuffer);
 		}
 
 		/* Swap front and back buffers */

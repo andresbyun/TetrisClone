@@ -26,6 +26,7 @@ unsigned int LoadShaders(string vertexPath, string fragmentPath) {
 	glAttachShader(ProgramId, VertexShaderId);
 	glAttachShader(ProgramId, FragmentShaderId);
 	glLinkProgram(ProgramId);
+	glValidateProgram(ProgramId);
 
 	/* Delete shaders */
 	DeleteShader(ProgramId, VertexShaderId);
